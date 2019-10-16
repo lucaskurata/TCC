@@ -1,0 +1,153 @@
+#config{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 70px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+#rodape{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    
+}
+
+label, input{
+ 	display: block;
+ 	float: left;
+}
+
+label {
+  text-align:right;
+  width: 120px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  font-size: 16px;
+  margin-left: 10px;
+    margin-right: auto;
+}
+
+fieldset {
+  border: solid 2px #0B2161;
+  width: 900px
+}
+
+br {
+  clear: left;
+}
+
+input{
+	background-color: #F0E6D7;
+	font-weight: bold;
+}
+
+input:focus { 
+    background-color: #D8D5C4;
+}
+
+legend{
+	font-weight: bold;
+	font-color:#086A87;
+	font-family: Georgia;
+	text-align: center;		
+}
+
+
+#nome{
+
+ padding-left: 50px;
+  padding-right: 50px;
+}
+
+#cdproduto{
+  width: 30px;
+  
+}
+
+#codbarras{
+  margin-left: 10px;
+    margin-right: auto;
+}
+
+#marca{
+  width: 100px; 
+}
+
+#compra{
+  width: 70px; 
+
+}
+
+#venda{
+width: 70px; 
+
+}
+
+#nmproduto{
+ margin-left: 150px;
+ text-align: right;
+}
+
+#cdbarras{
+margin-left: 40px;
+
+}
+
+#vlvenda{
+  margin-left: 90px;
+}
+
+
+
+
+
+
+
+.
+
+textarea:focus {
+  background: white;.
+}
+
+::-webkit-input-placeholder {
+   color: #0B2161;
+}
+:-moz-placeholder {
+   color: #0B2161;
+}
+::-moz-placeholder {
+   color: #0B2161;
+}
+:-ms-input-placeholder {
+ color: #0B2161;
+}
+
+.button {
+  background-color: #FECB5F;
+  border: none;
+  color: black;
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.5;
+  transition: 0.4s;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Arial;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+.button:hover {opacity: 1}
