@@ -46,8 +46,17 @@ require "conexao.php";
 <?php
 
 // Executando consulta SQL
-$query = 'SELECT codProduto, nome_produto, marca, numeracao, quantidade, 
-    valor_custo, valor_venda, fornecedor, categoria_produto, cor FROM produtos';
+$query = 'SELECT codProduto, 
+          nome_produto, 
+          marca, 
+          numeracao, 
+          quantidade, 
+          CONCAT("R$ ", valor_custo) AS valor_custo, 
+          CONCAT("R$ ", valor_venda) AS valor_venda, 
+          fornecedor, 
+          categoria_produto, 
+          cor 
+          FROM produtos';
 $result = mysqli_query($con, $query) or die('Query failed: ' . mysql_error());
 
 // Imprimindo resultados em HTML
