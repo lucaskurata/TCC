@@ -48,7 +48,7 @@ while ($registro = mysqli_fetch_array($result)){
   <body>
     <a href = "../HTML/menu.html"><img src="../IMAGENS/logo.png" width="100" height="50"></a>
   <div class="navegacao">
-    <a href="../HTML/menu.html">Voltar</a>
+    <a href="../PHP/consultandoProduto.php">Voltar</a>
   </div>
   
   <hr/>
@@ -119,7 +119,7 @@ while ($registro = mysqli_fetch_array($result)){
 			  <strong id = "obrigatorio">Os campos marcados com asterisco são de preenchimento obrigatório.</strong>
         <hr/>
         <div class="button">
-            <button name = "enviar" type = "submit" >Confirmar cadastro</button>
+            <button name = "enviar" type = "submit" >Atualizar produto</button>
         </div>
         <?php } ?>
         <?php

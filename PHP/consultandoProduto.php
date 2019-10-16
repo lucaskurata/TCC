@@ -19,7 +19,7 @@ require "conexao.php";
 
  </li>
 
- <li><a href="#">Sair do sistema</a></li>
+ <li><a href="../HTML/index.html">Sair do sistema</a></li>
 
 </ul>
 
@@ -74,4 +74,4 @@ while ($registro = mysqli_fetch_array($result)){
   </tr>
     <?php } ?>
 </form>
-<hr/>
+
