@@ -9,19 +9,12 @@ require "conexao.php";
  <title>Resultado da pesquisa</title>
 </head>
 <body>
-<ul id="menu-bar">
-
- <li><a href= "../HTML/cadastrarProduto.php">Cadastrar Novo Produto</a>
-
- <li><a href="../HTML/menu.html">Voltar para Menu</a> 
-
- </li>
-
- </li>
-
- <li><a href="../HTML/index.html">Sair do sistema</a></li>
-
-</ul>
+<h1>Consultar Produtos</h1>
+<div id = "navbar">
+  <a href="../HTML/menu.html">Voltar para Menu</a>
+  <a href="../HTML/index.html">Sair do sistema</a>
+</div>
+<a class = "navbaresquerda" href= "../HTML/cadastrarProduto.php">Novo Produto</a>
 
  <hr/>
  <form action = "editarProduto.php" method = "get">
@@ -38,8 +31,8 @@ require "conexao.php";
       <th>Fornecedor</th>
       <th>Categoria</th>
       <th>Cor</th>
-      <th>Excluir</th>
       <th>Alterar</th>
+      <th>Excluir</th>
     </tr>
   </thead>
   <tbody>
@@ -77,9 +70,9 @@ while ($registro = mysqli_fetch_array($result)){
     <td><?php echo $registro['fornecedor']; ?></td>
     <td><?php echo $registro['categoria_produto']; ?></td>
     <td><?php echo $registro['cor']; ?></td>
-    <td><a href="deletarProduto.php?id=<?php echo $registro['codProduto'] ?>" 
+    <td id = "excluir"><a href = "editarProduto.php?id=<?php echo $registro['codProduto'] ?>">Alterar</a></td>
+    <td id = "editar"><a href="deletarProduto.php?id=<?php echo $registro['codProduto'] ?>" 
     onclick="return confirm('Tem certeza que deseja excluir este registro?')">Excluir</a></td>
-    <td><a href = "editarProduto.php?id=<?php echo $registro['codProduto'] ?>">Editar</a></td>
   </tr>
     <?php } ?>
 </form>
