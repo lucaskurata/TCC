@@ -6,7 +6,7 @@ require "conexao.php";
 <html>
  <head>
  <link href="../CSS/formataTabelaCrud.css" rel="stylesheet" type="text/css">
- <title>Resultado da pesquisa</title>
+ <title>Consultando produtos</title>
 </head>
 <body>
 <h1>Consultar Produtos</h1>

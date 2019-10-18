@@ -31,6 +31,10 @@ a{
   border-color:  rgb(45, 173, 45);
 }
 
+#excluir a:hover{
+  border-color:  rgb(174, 255, 174);
+}
+
 #editar a{
   text-align: right;
   text-decoration: none;
@@ -41,6 +45,10 @@ a{
   margin-right: 1px;
   border-radius: 3px;
   border-color: rgb(221, 43, 43);
+}
+
+#editar a:hover{
+  border-color: rgb(255, 168, 168); 
 }
 
 h1{
@@ -96,8 +104,6 @@ tr:hover {
   text-align: right;
 }
 
-
-
 #navbar a{
   text-decoration: none;
   font: 20px Arial, Verdana, Helvetica;
@@ -112,7 +118,8 @@ tr:hover {
 }
 
 #navbar a:hover{
-  color: black;
+  
   border: 1px solid #666;
+  border-color: cyan;
 }
 
