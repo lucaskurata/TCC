@@ -10,7 +10,30 @@ h1{
     color:darkcyan;
     font-size: 50px;
 }
-    
+
+#navbar {
+  text-align: right;
+}
+
+#navbar a{
+  text-decoration: none;
+  font: 20px Arial, Verdana, Helvetica;
+  text-align: right;
+  padding: 1px 7px;
+  margin-right: 1px;
+  border: 1px solid #A1A1A1;
+  border-radius: 5px;
+  background-color: rgb(68, 167, 180);
+  color: white;
+  border-color:  rgb(68, 167, 180);
+}
+
+#navbar a:hover{
+  
+  border: 1px solid #666;
+  border-color: cyan;
+} 
+
 fieldset{
     margin: 0 auto;
     width: 600px;

@@ -47,9 +47,13 @@ require "../PHP/funcoesFornecedor.php";
     </script>
   <body>
     <a href = "../HTML/menu.html"><img src="../IMAGENS/logo.png" width="100" height="50"></a>
-  <div class="navegacao">
-    <a href="../HTML/menu.html">Voltar</a>
-  </div>
+  
+    <div id = "navbar">
+        <a href = "../PHP/consultandoFornecedor.php">Consultar Fornecedores</a>
+        <a href="../HTML/menu.html">Voltar para Menu</a>
+        <a href="../HTML/index.html">Sair do sistema</a>
+    </div>
+
   <hr/>
   <fieldset>
         <h1 id = "centro">Cadastrar Fornecedor</h1>

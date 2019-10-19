@@ -39,8 +39,10 @@ require "../PHP/funcoesUsuario.php";
   </head>
   <body>
   <a href = "../HTML/menu.html"><img src="../IMAGENS/logo.png" width="100" height="50"></a>
-  <div class="navegacao">
-    <a href="../HTML/menu.html">Voltar</a>
+  <div id = "navbar">
+    <a href = "../PHP/consultandoUsuario.php">Consultar Usuários</a>
+    <a href="../HTML/menu.html">Voltar para Menu</a>
+    <a href="../HTML/index.html">Sair do sistema</a>
   </div>
   
   <hr/>
@@ -75,7 +77,6 @@ require "../PHP/funcoesUsuario.php";
 			  <strong id = "obrigatorio">Os campos marcados com asterisco são de preenchimento obrigatório.</strong>
               <hr/>
               <div class="button">
-                  
                   <button name = "enviar" type = "submit" >Confirmar cadastro</button>
               </div>
           </form>
