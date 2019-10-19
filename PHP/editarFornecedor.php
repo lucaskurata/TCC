@@ -58,7 +58,7 @@ while ($registro = mysqli_fetch_array($result)){
   </div>
   <hr/>
   <fieldset>
-        <h1 id = "centro">Cadastrar Fornecedor</h1>
+        <h1 id = "centro">Editar Fornecedor</h1>
         <hr/>
         <form action = "" method = "post" autocomplete="off">
         <div>
@@ -126,7 +126,7 @@ while ($registro = mysqli_fetch_array($result)){
         </div>
         <hr/>
         <div class="button">
-            <button name = "enviar" type = "submit">Enviar</button>
+            <button name = "enviar" type = "submit">Atualizar</button>
         </div>
         <?php } ?>
     </form>
@@ -149,10 +149,6 @@ while ($registro = mysqli_fetch_array($result)){
                     eliminaMascaraInt($celularFornecedor);
                     eliminaMascaraInt($cepFornecedor);
                     eliminaMascaraInt($cnpjFornecedor);
-        
-                    $compara = mysqli_query($con, "SELECT * FROM fornecedor WHERE cnpjFornecedor = '$cnpjFornecedor'");
-                    $row = mysqli_num_rows($compara);
-                                            
 
                     if (empty($nomeFornecedor) || empty($emailFornecedor) || empty($celularFornecedor) || empty($enderecoFornecedor) || empty($numeroFornecedor) || empty($cepFornecedor) || empty($cnpjFornecedor) || empty($cidadeFornecedor) || empty($estadoFornecedor)){
                         echo "<strong id = 'alert'>Campos obrigatórios vazios, favor preencher</strong>";

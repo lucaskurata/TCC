@@ -42,7 +42,7 @@ require "../PHP/funcoesProduto.php";
   <body>
     <a href = "../HTML/menu.html"><img src="../IMAGENS/logo.png" width="100" height="50"></a>
   <div class="navegacao">
-    <a href="../PHP/consultandoProduto.php">Voltar</a>
+    <a href="../HTML/menu.html">Voltar</a>
   </div>
   
   <hr/>

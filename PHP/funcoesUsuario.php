@@ -1,6 +1,5 @@
 <?php
 
-
 function eliminaMascaraInt(&$variavel){
 	//"11975591454" --> 11975591454 
     $variavel = str_replace(".", "", $variavel);
@@ -9,7 +8,7 @@ function eliminaMascaraInt(&$variavel){
     $variavel = str_replace("(", "", $variavel);
     $variavel = str_replace(")", "", $variavel);
     $variavel = str_replace(" ", "", $variavel);
-    $variavel = (int)$variavel;
+    $variavel = $variavel;
 }
 function verificaEntradaString($variavel){
 	$variavel = (int)$variavel;

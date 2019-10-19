@@ -43,15 +43,16 @@ require "conexao.php";
 $query = 'SELECT codFornecedor,
         nomeFornecedor,
         emailFornecedor,
-        telefoneFornecedor,
-        celularFornecedor,
+        CONCAT ("(", SUBSTR(telefoneFornecedor, 1, 2), ")", " ", SUBSTR(telefoneFornecedor, 3, 4) , "-", SUBSTR(telefoneFornecedor, 7, 6)) AS telefoneFornecedor,
+        CONCAT ("(", SUBSTR(celularFornecedor, 1, 2), ")", " ", SUBSTR(celularFornecedor, 3, 5), "-", SUBSTR(celularFornecedor, 8, 7))AS celularFornecedor,
         enderecoFornecedor,
         numeroFornecedor,
-        concat (SUBSTR(cepFornecedor, 1 , 5), "-", SUBSTR(cepFornecedor,6,9)) as cepFornecedor,
-        concat (SUBSTR(cnpjFornecedor, 1, 2), ".", SUBSTR(cnpjFornecedor,3, 3), ".", SUBSTR(cnpjFornecedor,6, 3), "/", SUBSTR(cnpjFornecedor, 9, 4), "-", SUBSTR(cnpjFornecedor, 13, 14)) as cnpjFornecedor,
+        CONCAT (SUBSTR(cepFornecedor, 1 , 5), "-", SUBSTR(cepFornecedor,6,9)) AS cepFornecedor,
+        CONCAT (SUBSTR(cnpjFornecedor, 1, 2), ".", SUBSTR(cnpjFornecedor,3, 3), ".", SUBSTR(cnpjFornecedor,6, 3), "/", SUBSTR(cnpjFornecedor, 9, 4), "-", SUBSTR(cnpjFornecedor, 13, 14)) AS cnpjFornecedor,
         cidadeFornecedor,
         estadoFornecedor
-        FROM fornecedor';
+        FROM fornecedor
+        ORDER BY codFornecedor';
 
 $result = mysqli_query($con, $query) or die('Query failed: ' . mysql_error());
 

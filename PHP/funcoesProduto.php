@@ -7,7 +7,7 @@ function eliminaMascaraInt($variavel){
     $variavel = str_replace("(", "", $variavel);
     $variavel = str_replace(")", "", $variavel);
     $variavel = str_replace(" ", "", $variavel);
-    $variavel = (int)$variavel;
+    $variavel = $variavel;
 }
 function verificaEntradaString($variavel){
 	$variavel = (int)$variavel;

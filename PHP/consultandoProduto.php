@@ -6,7 +6,7 @@ require "conexao.php";
 <html>
  <head>
  <link href="../CSS/formataTabelaCrud.css" rel="stylesheet" type="text/css">
- <title>Consultando produtos</title>
+ <title>Consultando Produtos</title>
 </head>
 <body>
 <h1>Consultar Produtos</h1>
@@ -39,7 +39,8 @@ require "conexao.php";
 <?php
 
 // Executando consulta SQL
-$query = 'SELECT codProduto, 
+$query = 'SELECT 
+          codProduto, 
           nome_produto, 
           marca, 
           numeracao, 
@@ -49,7 +50,8 @@ $query = 'SELECT codProduto,
           fornecedor, 
           categoria_produto, 
           cor 
-          FROM produtos';
+          FROM produtos
+          ORDER BY codProduto';
 $result = mysqli_query($con, $query) or die('Query failed: ' . mysql_error());
 
 // Imprimindo resultados em HTML
