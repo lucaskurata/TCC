@@ -1,21 +1,39 @@
 <?php
+session_start();
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['password']);
+  header("location: ../HTML/login.php");
+
+}
+
+$logado = $_SESSION['email'];
 
 // Conectando
 require "conexao.php";
 ?>
 <html>
  <head>
+ <link rel="sortcut icon" href="../IMAGENS/logo2.png" type="image/png" />
  <link href="../CSS/formataTabelaCrud.css" rel="stylesheet" type="text/css">
  <title>Consultando fornecedores</title>
 </head>
 <body>
-<h1>Consultar Fornecedores</h1>
-<div id = "navbar">
-  <a href="../HTML/menu.html">Voltar para Menu</a>
-  <a href="../HTML/index.html">Sair do sistema</a>
-</div>
-<a class = "navbaresquerda" href= "../HTML/cadastrarFornecedor.php">Novo Fornecedor</a>
-
+<div id = "menu">
+    <ul>
+      <li><a href= "../PHP/consultandoProduto.php">Consultar Produtos</a></li>
+      <li><a href= "../HTML/cadastrarProduto.php">Cadastrar Produtos</a></li>
+      <li><a href= "../PHP/consultandoUsuario.php">Consultar Usuários</a></li>
+      <li><a href= "../HTML/cadastrarUsuario.php">Cadastrar Usuários</a></li>
+      <li><a href= "../HTML/cadastrarFornecedor.php">Cadastrar Fornecedores</a></li>
+      <li><a href="../HTML/logout.php">Sair do sistema</a></li>
+    </ul>
+  </div>
+  <br>
+  <br>
+  <a class = "navbaresquerda" href= "../HTML/cadastrarFornecedor.php">Novo Fornecedor</a>
+  <br>
+  <br>
  <hr/>
  <form action = "editarFornecedor.php" method = "get">
  <table>
@@ -23,7 +41,7 @@ require "conexao.php";
     <tr>
       <th>ID</th>
       <th>Nome</th>
-      <th>Email</th>
+      <th>E-mail</th>
       <th>Telefone</th>
       <th>Celular</th>
       <th>Endereço</th>
@@ -60,7 +78,7 @@ $result = mysqli_query($con, $query) or die('Query failed: ' . mysql_error());
 
 
 while ($registro = mysqli_fetch_array($result)){
- 
+
  ?>
 
 <tr>
@@ -76,7 +94,7 @@ while ($registro = mysqli_fetch_array($result)){
     <td><?php echo $registro['estadoFornecedor']; ?></td>
     <td><?php echo $registro['cidadeFornecedor']; ?></td>
     <td id = "excluir"><a href = "editarFornecedor.php?id=<?php echo $registro['codFornecedor'] ?>">Alterar</a></td>
-    <td id = "editar"><a href="deletarFornecedor.php?id=<?php echo $registro['codFornecedor'] ?>" 
+    <td id = "editar"><a href="deletarFornecedor.php?id=<?php echo $registro['codFornecedor'] ?>"
     onclick="return confirm('Tem certeza que deseja excluir este registro?')">Excluir</a></td>
   </tr>
     <?php } ?>

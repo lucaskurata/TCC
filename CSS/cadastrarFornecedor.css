@@ -41,6 +41,7 @@ fieldset{
     padding: 2em;
     border: 2px solid #cccccc;
     background-color: white;
+    border-radius: 15px;
     }
 form div + div {
     margin-top: 1em;

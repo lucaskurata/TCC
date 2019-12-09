@@ -38,6 +38,7 @@ mysqli_set_charset($con,"utf8");
 	<body>
 
 <?php
+session_start();
 $email=$_POST['email'];
 $senha=$_POST['senha'];
 $encriptografar = base64_encode($senha);
@@ -56,9 +57,13 @@ if (empty($email)){
 }if($email == $senha){
 	echo '<script>valuesEquals()</script>';
 }else{
-	if($row == 1){
+	if($row > 0){
+		$_SESSION['email'] = $email;
+		$_SESSION['password'] = $encriptografar;
 		echo '<script>loginsucessfully()</script>';
 	}if($row == 0){
+		unset ($_SESSION['email']);
+		unset ($_SESSION)['password'];
 		echo "<script>loginfailed()</script>";
 	}
 }

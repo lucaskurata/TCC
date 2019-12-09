@@ -1,6 +1,17 @@
 <?php
 require_once "../PHP/conexao.php";
-require "../PHP/funcoesFornecedor.php"; 
+require "../PHP/funcoesFornecedor.php";
+
+session_start();
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['password']);
+  header("location: login.php");
+
+}
+
+$logado = $_SESSION['email'];
+
 
 ?>
 
@@ -11,6 +22,7 @@ require "../PHP/funcoesFornecedor.php";
     <meta charset="utf-8">
     <link rel = "stylesheet" type = "text/css" href = "../CSS/cadastrarFornecedor.css">
   </head>
+  <link rel="sortcut icon" href="../IMAGENS/logo2.png" type="image/png" />
   <script src = "../JQuery/jquery-3.4.1.min.js" ></script>
   <script src = "../JQuery/jquery.mask.js" ></script>
   <script type="text/javascript">
@@ -26,32 +38,32 @@ require "../PHP/funcoesFornecedor.php";
         $(document).ready(function(){
           $('#celular').mask('(00) 00000-0000');
     })
-    
+
    //Função para remover a mensagem do ECHO depois de alguns segundos
    function removeMensagem(){
-            setTimeout(function(){ 
+            setTimeout(function(){
             var msg = document.getElementById("alert");
             var msg2 = document.getElementById("cadastradoSucesso");
             msg.parentNode.removeChild(msg);
-            msg2.parentNode.removeChild(msg2);   
+            msg2.parentNode.removeChild(msg2);
         }, 5000);
     }
         document.onreadystatechange = () => {
             if (document.readyState === 'complete') {
-                // toda vez que a página carregar, vai limpar a mensagem (se houver) 
+                // toda vez que a página carregar, vai limpar a mensagem (se houver)
                 // após 5 segundos
-            removeMensagem(); 
+            removeMensagem();
         }
     };
 
     </script>
   <body>
     <a href = "../HTML/menu.html"><img src="../IMAGENS/logo.png" width="100" height="50"></a>
-  
+
     <div id = "navbar">
         <a href = "../PHP/consultandoFornecedor.php">Consultar Fornecedores</a>
-        <a href="../HTML/menu.html">Voltar para Menu</a>
-        <a href="../HTML/index.html">Sair do sistema</a>
+        <a href="../PHP/consultandoProduto.php">Voltar para Início</a>
+        <a href="../HTML/logout.php">Sair do sistema</a>
     </div>
 
   <hr/>
@@ -86,7 +98,7 @@ require "../PHP/funcoesFornecedor.php";
         <div>
 			<label for = "cidade">*Cidade: </label>
 			<input type = "text" id = "cidade"  maxlength="30" name = "cidade_fornecedor" placeholder = "Cidade" pattern= "^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+" required title = "Cidade do Fornecedor">
-            <label for = "a">*Estado: </label> 
+            <label for = "a">*Estado: </label>
 			<select name="estado_fornecedor">
                 <option value = "Acre">Acre</option>
                 <option value = "Alagoas">Alagoas</option>
@@ -115,7 +127,7 @@ require "../PHP/funcoesFornecedor.php";
                 <option value = "São Paulo">São Paulo</option>
                 <option value = "Sergipe">Sergipe</option>
                 <option value = "Tocantins">Tocantins</option>
-            </select> 
+            </select>
             <br>
             <br>
 			<strong id = "obrigatorio">Os campos marcados com asterisco são de preenchimento obrigatório.</strong>
@@ -125,35 +137,35 @@ require "../PHP/funcoesFornecedor.php";
             <button name = "enviar" type = "submit">Enviar</button>
         </div>
     </form>
-    
+
             <?php
                 if(isset($_POST['enviar'])){
-                    $nomeFornecedor = $_POST['nome_fantasia'];
+                    $nomeFornecedor = ucwords($_POST['nome_fantasia']);
                     $emailFornecedor = $_POST['email_fornecedor'];
                     $telefoneFornecedor = $_POST['telefone_fornecedor'];
                     $celularFornecedor = $_POST['celular_fornecedor'];
-                    $enderecoFornecedor = $_POST['endereco_fornecedor'];
+                    $enderecoFornecedor = ucwords($_POST['endereco_fornecedor']);
                     $numeroFornecedor = $_POST['numero_fornecedor'];
                     $cepFornecedor = $_POST['cep_fornecedor'];
                     $cnpjFornecedor = $_POST['cnpj_fornecedor'];
-                    $cidadeFornecedor = $_POST['cidade_fornecedor'];
-                    $estadoFornecedor = $_POST['estado_fornecedor'];
-                   
+                    $cidadeFornecedor = ucwords($_POST['cidade_fornecedor']);
+                    $estadoFornecedor = ucwords($_POST['estado_fornecedor']);
+
                     eliminaMascaraInt($telefoneFornecedor);
                     eliminaMascaraInt($celularFornecedor);
                     eliminaMascaraInt($cepFornecedor);
                     eliminaMascaraInt($cnpjFornecedor);
-        
+
                     $compara = mysqli_query($con, "SELECT * FROM fornecedor WHERE cnpjFornecedor = '$cnpjFornecedor'");
                     $row = mysqli_num_rows($compara);
-                                            
+
 
                     if (empty($nomeFornecedor) || empty($emailFornecedor) || empty($celularFornecedor) || empty($enderecoFornecedor) || empty($numeroFornecedor) || empty($cepFornecedor) || empty($cnpjFornecedor) || empty($cidadeFornecedor) || empty($estadoFornecedor)){
                         echo "<strong id = 'alert'>Campos obrigatórios vazios, favor preencher</strong>";
                     }else if(verificaEntradaInt($celularFornecedor) || verificaEntradaInt($numeroFornecedor) || verificaEntradaInt($cepFornecedor) || verificaEntradaInt($cnpjFornecedor)){
-                        echo "<strong id = 'alert'>Não alterar código fonte</strong>";    
+                        echo "<strong id = 'alert'>Não alterar código fonte</strong>";
                     }else if(verificaEntradaString($nomeFornecedor) || verificaEntradaString($emailFornecedor) || verificaEntradaString($enderecoFornecedor) ||verificaEntradaString($cidadeFornecedor) ||verificaEntradaString($estadoFornecedor)){
-                        echo "<strong id = 'alert'>Não alterar código fonte</strong>";                    
+                        echo "<strong id = 'alert'>Não alterar código fonte</strong>";
                     }else if (strlen($nomeFornecedor) < 6 || strlen($emailFornecedor) < 10|| strlen($celularFornecedor) < 11|| strlen($enderecoFornecedor) < 8 || strlen($cnpjFornecedor) < 14 || strlen($cepFornecedor) < 8){
                         echo "<strong id = 'alert'>Algum campo apresenta tamanho inválido</strong>";
                     }else if($nomeFornecedor == $emailFornecedor || $nomeFornecedor == $enderecoFornecedor || $nomeFornecedor == $cidadeFornecedor || $cepFornecedor == $cnpjFornecedor || $cidadeFornecedor == $enderecoFornecedor || $enderecoFornecedor == $numeroFornecedor){
@@ -165,12 +177,12 @@ require "../PHP/funcoesFornecedor.php";
                             echo "<strong id = 'cadastradoSucesso'>Fornecedor cadastrado com sucesso!</strong>";
                             $sql = "insert into fornecedor(nomeFornecedor, emailFornecedor, telefoneFornecedor, celularFornecedor, enderecoFornecedor, numeroFornecedor,
 			                cepFornecedor, cnpjFornecedor, cidadeFornecedor, estadoFornecedor) values ('$nomeFornecedor', '$emailFornecedor', '$telefoneFornecedor', '$celularFornecedor', '$enderecoFornecedor',
-			                '$numeroFornecedor', '$cepFornecedor', '$cnpjFornecedor', '$cidadeFornecedor', '$estadoFornecedor')"; 
+			                '$numeroFornecedor', '$cepFornecedor', '$cnpjFornecedor', '$cidadeFornecedor', '$estadoFornecedor')";
                             $result = mysqli_query($con, $sql);
                         }
                     }
                 }
-                
+
             ?>
 
     </fieldset>

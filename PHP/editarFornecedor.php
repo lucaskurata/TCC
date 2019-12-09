@@ -1,4 +1,15 @@
 <?php
+
+session_start();
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['password']);
+  header("location: ../HTML/login.php");
+  
+}
+
+$logado = $_SESSION['email'];
+
 require_once "../PHP/conexao.php";
 require "../PHP/funcoesFornecedor.php"; 
 $id = $_GET["id"];
@@ -13,6 +24,7 @@ while ($registro = mysqli_fetch_array($result)){
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <link rel="sortcut icon" href="../IMAGENS/logo2.png" type="image/png" />
     <title>Cadastro de fornecedores</title>
     <meta charset="utf-8">
     <link rel = "stylesheet" type = "text/css" href = "../CSS/cadastrarFornecedor.css">
@@ -134,16 +146,16 @@ while ($registro = mysqli_fetch_array($result)){
             <?php
                 if(isset($_POST['enviar'])){
                     $idp = $_POST['crud'];
-                    $nomeFornecedor = $_POST['nome_fantasia'];
+                    $nomeFornecedor = ucwords($_POST['nome_fantasia']);
                     $emailFornecedor = $_POST['email_fornecedor'];
                     $telefoneFornecedor = $_POST['telefone_fornecedor'];
                     $celularFornecedor = $_POST['celular_fornecedor'];
-                    $enderecoFornecedor = $_POST['endereco_fornecedor'];
+                    $enderecoFornecedor = ucwords($_POST['endereco_fornecedor']);
                     $numeroFornecedor = $_POST['numero_fornecedor'];
                     $cepFornecedor = $_POST['cep_fornecedor'];
                     $cnpjFornecedor = $_POST['cnpj_fornecedor'];
-                    $cidadeFornecedor = $_POST['cidade_fornecedor'];
-                    $estadoFornecedor = $_POST['estado_fornecedor'];
+                    $cidadeFornecedor = ucwords($_POST['cidade_fornecedor']);
+                    $estadoFornecedor = ucwords($_POST['estado_fornecedor']);
                    
                     eliminaMascaraInt($telefoneFornecedor);
                     eliminaMascaraInt($celularFornecedor);

@@ -7,17 +7,6 @@ body{
     background-color: rgb(235, 235, 235);
 }
 
-a{
-    text-align: right;
-    text-decoration: none;
-    color: white;
-    background-color: royalblue;
-    border: solid 1px black;
-    padding: 1px 7px;
-    margin-right: 1px;
-    border-radius: 3px;
-    border-color: royalblue;
-}
 
 #excluir a{
   text-align: right;
@@ -52,7 +41,7 @@ a{
 }
 
 h1{
-  color: #666;
+  color: darkcyan;
   font-size: 40px;
 }
 
@@ -67,7 +56,7 @@ th{
 }
 
 tr:nth-child(odd) {
-		background-color:#F3F3F3;
+		background-color:rgb(226, 224, 224);
 }
 
 tr:nth-child(even) {
@@ -94,10 +83,16 @@ tr:hover {
 .navbaresquerda{
   text-align: center;
   color: white;
+  text-decoration: none;
   border 1px solid;
   padding: 4px 7px;
   border-color:  rgb(255, 153, 51);
   background-color:rgb(255, 153, 51);
+}
+
+.navbaresquerda:hover{
+  border: 2px solid;
+  border-color: rgb(252, 225, 198);
 }
 
 #navbar {
@@ -118,8 +113,36 @@ tr:hover {
 }
 
 #navbar a:hover{
-  
   border: 1px solid #666;
   border-color: cyan;
+}
+
+#menu ul{
+  margin: -8px;
+  list-style: none;
+  background-color: rgb(5, 173, 173);
+  
+}
+
+#menu ul li{
+  display: inline;
+  border-left: 2px solid white;
+}
+
+#menu ul li a{
+  text-decoration: none;
+  padding: 20px 20px;
+  display: inline-block;
+  color: white;
+  font-size: 21px;
+  text-shadow:black 1px 1px 1px;
+}
+
+#menu ul li a:hover{
+  color: rgb(119, 118, 118);
+}
+
+#menu ul li a:focus{
+  color: rgb(75, 2, 2);
 }
 

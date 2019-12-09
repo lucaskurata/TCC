@@ -1,4 +1,14 @@
 <?php
+session_start();
+if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['password']) == true)){
+  unset($_SESSION['email']);
+  unset($_SESSION['password']);
+  header("location: ../HTML/login.php");
+  
+}
+
+$logado = $_SESSION['email'];
+
 require_once "../PHP/conexao.php";
 require "../PHP/funcoesProduto.php";
 $id = $_GET["id"];
@@ -13,6 +23,7 @@ while ($registro = mysqli_fetch_array($result)){
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <link rel="sortcut icon" href="../IMAGENS/logo2.png" type="image/png" />
     <title>Atualizar produto</title>
     <meta charset="utf-8">
     <link rel = "stylesheet" type = "text/css" href = "../CSS/cadastrarProduto.css">
@@ -125,15 +136,15 @@ while ($registro = mysqli_fetch_array($result)){
         <?php
              if(isset($_POST['enviar'])){
                 $idp = $_POST['crud'];
-                $nomeProduto = $_POST['nome_produto'];
-                $marcaProduto = strtolower($_POST['marca']);
-                $numeracaoProduto = strtolower($_POST['numeracao']);
-                $quantidadeProduto = $_POST['quantidade'];
-                $valorCusto = $_POST['valor_custo'];
-                $valorVenda = $_POST['valor_venda'];
-                $fornecedorProduto = $_POST['fornecedor'];
-                $categoriaProduto = $_POST['categoria_produto'];
-                $corProduto = $_POST['cor'];
+                $nomeProduto = ucwords($_POST['nome_produto']);
+                $marcaProduto = ucwords(($_POST['marca']));
+                $numeracaoProduto = strtoupper($_POST['numeracao']);
+                $quantidadeProduto = ucwords($_POST['quantidade']);
+                $valorCusto = ucwords($_POST['valor_custo']);
+                $valorVenda = ucwords($_POST['valor_venda']);
+                $fornecedorProduto = ucwords($_POST['fornecedor']);
+                $categoriaProduto = ucwords($_POST['categoria_produto']);
+                $corProduto = ucwords($_POST['cor']);
 
                
                 eliminaMascaraInt($valorCusto);
@@ -143,7 +154,7 @@ while ($registro = mysqli_fetch_array($result)){
 
                 if (empty($nomeProduto) || empty($marcaProduto) || empty($quantidadeProduto) || empty($valorCusto) || empty($valorVenda) || empty($categoriaProduto) || empty($corProduto)){
                     echo "<strong id = 'alert'>Campos obrigatórios vazios, favor preencher</strong>";
-                }else if(verificaEntradaInt($quantidadeProduto) || verificaEntradaInt($valorCusto) || verificaEntradaInt($valorVenda)){
+                }else if(verificaEntradaInt($quantidadeProduto) /*|| verificaEntradaInt($valorCusto) || verificaEntradaInt($valorVenda)*/){
                     echo "<strong id = 'alert'>Não alterar código fonte</strong>";    
                 }else if(verificaEntradaString($categoriaProduto) || verificaEntradaString($corProduto)){
                     echo "<strong id = 'alert'>Não alterar código fonte</strong>";                    
